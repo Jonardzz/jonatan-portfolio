@@ -301,11 +301,11 @@ export default function Home() {
                         </form>
                     </div>
 
-                    {/* Image next to email form */}
+                    {/* Image next to email form (Case Fixed) */}
                     <div className="md:col-span-6 md:pl-12">
                         <div className="relative p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 transform md:-rotate-2 shadow-xl">
                             <img 
-                                src="/gifs/info.gif" 
+                                src="/gifs/Info.gif" 
                                 alt="Contact Info Delivery" 
                                 className="w-full h-auto opacity-90 rounded-sm"
                                 style={ghibliSoftGrade}
