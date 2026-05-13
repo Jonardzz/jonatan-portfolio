@@ -305,7 +305,7 @@ export default function Home() {
                     <div className="md:col-span-6 md:pl-12">
                         <div className="relative p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 transform md:-rotate-2 shadow-xl">
                             <img 
-                                src="/gifs/Info.gif" 
+                                src="/gifs/Mail 2.gif" 
                                 alt="Contact Info Delivery" 
                                 className="w-full h-auto opacity-90 rounded-sm"
                                 style={ghibliSoftGrade}
