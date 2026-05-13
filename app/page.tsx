@@ -1,8 +1,13 @@
-export default function Home() {
+"use client"; // This line lets us use click events and state
+import { useState } from 'react';
 
-  // Adds a warm, sunset-like color to match the Ghibli picture
-  const ghibliWarmGrade = {
-    filter: 'sepia(0.4) saturate(0.85) contrast(0.95) brightness(0.95) hue-rotate(-5deg)'
+export default function Home() {
+  // This state tracks if the navigation menu is open or closed
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Adds a soft, clean watercolor tone to match your paintbrush GIF
+  const ghibliSoftGrade = {
+    filter: 'brightness(1.05) contrast(0.9) saturate(0.85) sepia(0.05)'
   };
 
   return (
@@ -10,11 +15,33 @@ export default function Home() {
         
         <div className="max-w-5xl mx-auto relative z-10">
             
-            {/* Top Menu Icon */}
-            <header className="flex justify-end mb-16">
-                <button className="flex flex-col gap-2 items-end group cursor-pointer focus:outline-none">
-                    <span className="w-8 h-[1px] bg-[#e6ddc5] transition-all group-hover:bg-[#cfa262] group-hover:w-6"></span>
-                    <span className="w-6 h-[1px] bg-[#e6ddc5] transition-all group-hover:bg-[#cfa262] group-hover:w-8"></span>
+            {/* Interactive Top Header */}
+            <header className="flex justify-end items-center mb-16 relative z-50 h-8">
+                {/* Clean navigation links that fade in when menuOpen is true */}
+                <div className={`flex items-center gap-8 pr-6 transition-all duration-300 ${
+                    menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none absolute'
+                }`}>
+                    <a href="#about" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">About</a>
+                    <a href="#education" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Education</a>
+                    <a href="#projects" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Projects</a>
+                    <a href="#contact" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Contact</a>
+                    {/* Resume Link */}
+                    <a href="/Rodriguez, Jonatan Resume 2026.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors flex items-center gap-2">
+                        Resume <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>
+                    </a>
+                </div>
+
+                {/* Animated 2-Line Button */}
+                <button 
+                    onClick={() => setMenuOpen(!menuOpen)} 
+                    className="flex flex-col gap-2 items-end cursor-pointer focus:outline-none group"
+                >
+                    <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
+                        menuOpen ? 'w-6 rotate-45 translate-y-[4.5px] bg-[#cfa262]' : 'w-8 group-hover:bg-[#cfa262] group-hover:w-6'
+                    }`}></span>
+                    <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
+                        menuOpen ? 'w-6 -rotate-45 -translate-y-[4.5px] bg-[#cfa262]' : 'w-6 group-hover:bg-[#cfa262] group-hover:w-8'
+                    }`}></span>
                 </button>
             </header>
 
@@ -56,7 +83,7 @@ export default function Home() {
                                 src="/gifs/Intro3.gif" 
                                 alt="Cinematic Hero" 
                                 className="w-full h-auto rounded-sm opacity-90"
-                                style={ghibliWarmGrade}
+                                style={ghibliSoftGrade}
                             />
                         </div>
                     </div>
@@ -64,13 +91,13 @@ export default function Home() {
             </main>
 
             {/* About Me and Skills Section */}
-            <section className="mb-32 border-t border-[#e6ddc5]/10 pt-20">
+            <section id="about" className="mb-32 border-t border-[#e6ddc5]/10 pt-20 scroll-mt-12">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
                     
                     {/* Side Image for About Section */}
                     <div className="md:col-span-5 relative">
                         <div className="sticky top-12 p-2 bg-[#333b47] rounded-full overflow-hidden shadow-xl border border-[#e6ddc5]/5 aspect-square flex items-center justify-center">
-                            <img src="/gifs/G2.gif" alt="About Illustration" className="w-full h-full object-cover rounded-full opacity-80 hover:opacity-100 transition-opacity duration-500" style={ghibliWarmGrade} />
+                            <img src="/gifs/G2.gif" alt="About Illustration" className="w-full h-full object-cover rounded-full opacity-80 hover:opacity-100 transition-opacity duration-500" style={ghibliSoftGrade} />
                         </div>
                     </div>
 
@@ -114,13 +141,13 @@ export default function Home() {
             </section>
 
             {/* School and Certificates Section */}
-            <section className="mb-32 pt-12 border-t border-[#e6ddc5]/10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8 items-start">
+            <section id="education" className="mb-32 pt-20 border-t border-[#e6ddc5]/10 scroll-mt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     
                     {/* Left Box: School */}
                     <div className="space-y-6">
                         <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-xl transform md:-rotate-1 transition-transform hover:rotate-0">
-                            <img src="/gifs/education.gif" alt="Education" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliWarmGrade} />
+                            <img src="/gifs/education.gif" alt="Education" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliSoftGrade} />
                         </div>
                         <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-8 rounded-sm shadow-lg space-y-8">
                             <h2 className="text-2xl font-display font-bold text-[#cfa262] border-b border-[#e6ddc5]/10 pb-4">Education</h2>
@@ -142,7 +169,7 @@ export default function Home() {
                     {/* Right Box: Certificates */}
                     <div className="space-y-6">
                         <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-xl transform md:rotate-1 transition-transform hover:rotate-0">
-                            <img src="/gifs/Education.webp" alt="Licenses & Certifications" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliWarmGrade} />
+                            <img src="/gifs/Education.webp" alt="Licenses & Certifications" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliSoftGrade} />
                         </div>
                         <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-8 rounded-sm shadow-lg space-y-8">
                             <h2 className="text-2xl font-display font-bold text-[#cfa262] border-b border-[#e6ddc5]/10 pb-4">Licenses & certifications</h2>
@@ -162,7 +189,7 @@ export default function Home() {
             </section>
 
             {/* My Projects Section */}
-            <section className="mb-24 pt-12 border-t border-[#e6ddc5]/10">
+            <section id="projects" className="mb-24 pt-12 border-t border-[#e6ddc5]/10 scroll-mt-12">
                 <h2 className="text-3xl font-bold font-display text-[#e6ddc5] mb-8">Projects</h2>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -170,7 +197,7 @@ export default function Home() {
                     {/* First Project: Amazon Search */}
                     <div className="bg-[#333b47] rounded-md overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col shadow-lg border border-[#e6ddc5]/5 group">
                         <div className="h-40 overflow-hidden relative">
-                            <img src="/gifs/G6.webp" alt="NLP Amazon Project" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500" style={ghibliWarmGrade} />
+                            <img src="/gifs/G6.webp" alt="NLP Amazon Project" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500" style={ghibliSoftGrade} />
                         </div>
                         <div className="p-4 pt-5 flex flex-col flex-grow">
                             <h3 className="font-bold text-[#e6ddc5] text-lg leading-tight mb-1">Amazon Review Search</h3>
@@ -189,13 +216,10 @@ export default function Home() {
                                         <span className="font-mono font-bold text-[11px]">NLTK</span>
                                     </a>
                                 </div>
-                                {/* Links to GitHub and Live Site */}
+                                {/* Only GitHub Link */}
                                 <div className="flex items-center gap-3">
                                     <a href="https://github.com/Jonardzz/NLP-Project" target="_blank" rel="noopener noreferrer" className="hover:text-[#cfa262] transition-colors flex items-center gap-1 font-medium">
                                         GitHub<i className="fa-solid fa-angle-right text-[10px]"></i>
-                                    </a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-[#cfa262] transition-colors flex items-center gap-1 font-medium">
-                                        Visit<i className="fa-solid fa-angle-right text-[10px]"></i>
                                     </a>
                                 </div>
                             </div>
@@ -205,7 +229,7 @@ export default function Home() {
                     {/* Second Project: Portfolio Website */}
                     <div className="bg-[#333b47] rounded-md overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col shadow-lg border border-[#e6ddc5]/5 group">
                         <div className="h-40 overflow-hidden relative">
-                            <img src="/gifs/G5.gif" alt="Portfolio Project Art" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500" style={ghibliWarmGrade} />
+                            <img src="/gifs/G5.gif" alt="Portfolio Project Art" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500" style={ghibliSoftGrade} />
                         </div>
                         <div className="p-4 pt-5 flex flex-col flex-grow">
                             <h3 className="font-bold text-[#e6ddc5] text-lg leading-tight mb-1">Jonatan Rodriguez</h3>
@@ -222,13 +246,10 @@ export default function Home() {
                                         <span className="font-mono font-bold text-[11px]">TW</span>
                                     </a>
                                 </div>
-                                {/* Links to GitHub and Live Site */}
+                                {/* Only GitHub Link */}
                                 <div className="flex items-center gap-3">
-                                    <a href="https://github.com/Jonardzz" target="_blank" rel="noopener noreferrer" className="hover:text-[#cfa262] transition-colors flex items-center gap-1 font-medium">
+                                    <a href="https://github.com/Jonardzz/jonatan-portfolio" target="_blank" rel="noopener noreferrer" className="hover:text-[#cfa262] transition-colors flex items-center gap-1 font-medium">
                                         GitHub<i className="fa-solid fa-angle-right text-[10px]"></i>
-                                    </a>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-[#cfa262] transition-colors flex items-center gap-1 font-medium">
-                                        Visit<i className="fa-solid fa-angle-right text-[10px]"></i>
                                     </a>
                                 </div>
                             </div>
@@ -254,7 +275,7 @@ export default function Home() {
             </section>
 
             {/* Email Form Section */}
-            <section className="border-t border-[#e6ddc5]/10 pt-20 pb-12">
+            <section id="contact" className="border-t border-[#e6ddc5]/10 pt-20 pb-12 scroll-mt-12">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center bg-[#333b47] p-8 md:p-12 rounded-sm border border-[#e6ddc5]/5 shadow-2xl relative overflow-hidden">
                     
                     <div className="md:col-span-6 space-y-6 relative z-10">
@@ -287,7 +308,7 @@ export default function Home() {
                                 src="/gifs/info.gif" 
                                 alt="Contact Info Delivery" 
                                 className="w-full h-auto opacity-90 rounded-sm"
-                                style={ghibliWarmGrade}
+                                style={ghibliSoftGrade}
                             />
                         </div>
                     </div>
