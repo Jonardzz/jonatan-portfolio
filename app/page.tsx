@@ -12,21 +12,21 @@ export default function Home() {
 
   // Technical Skills Array for the clean floating icon grid
   const technicalSkills = [
-      { name: 'Python', icon: <i className="fa-brands fa-python text-2xl"></i>, link: 'https://www.python.org/' },
-      { name: 'JavaScript', icon: <i className="fa-brands fa-js text-2xl"></i>, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-      { name: 'TypeScript', icon: <span className="font-bold text-[13px] font-mono border-[1.5px] border-current px-1 rounded-sm">TS</span>, link: 'https://www.typescriptlang.org/' },
-      { name: 'React', icon: <i className="fa-brands fa-react text-2xl"></i>, link: 'https://react.dev/' },
-      { name: 'Next.js', icon: <span className="font-serif italic font-bold text-2xl">N</span>, link: 'https://nextjs.org/' },
-      { name: 'Tailwind CSS', icon: <span className="font-mono font-bold text-[15px] border-b-2 border-current">TW</span>, link: 'https://tailwindcss.com/' },
-      { name: 'SQL', icon: <i className="fa-solid fa-database text-xl"></i>, link: 'https://en.wikipedia.org/wiki/SQL' },
-      { name: 'C++', icon: <span className="font-bold text-lg">C++</span>, link: 'https://isocpp.org/' },
-      { name: 'PyTorch', icon: <i className="fa-solid fa-fire-flame-simple text-xl"></i>, link: 'https://pytorch.org/' },
-      { name: 'Pandas', icon: <i className="fa-solid fa-table text-xl"></i>, link: 'https://pandas.pydata.org/' },
-      { name: 'NumPy', icon: <i className="fa-solid fa-cubes text-xl"></i>, link: 'https://numpy.org/' },
-      { name: 'NLTK', icon: <i className="fa-solid fa-book-open text-xl"></i>, link: 'https://www.nltk.org/' },
-      { name: 'Sentence Transformers', icon: <i className="fa-solid fa-language text-xl"></i>, link: 'https://sbert.net/' },
-      { name: 'Natural Language Processing', icon: <i className="fa-solid fa-brain text-xl"></i>, link: 'https://en.wikipedia.org/wiki/Natural_language_processing' },
-      { name: 'Full Stack Development', icon: <i className="fa-solid fa-layer-group text-xl"></i>, link: 'https://en.wikipedia.org/wiki/Solution_stack' },
+      { name: 'Python', icon: <i className="fa-brands fa-python text-xl"></i>, link: 'https://www.python.org/' },
+      { name: 'JavaScript', icon: <i className="fa-brands fa-js text-xl"></i>, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'TypeScript', icon: <span className="font-bold text-[11px] font-mono border-[1.5px] border-current px-1 rounded-sm">TS</span>, link: 'https://www.typescriptlang.org/' },
+      { name: 'React', icon: <i className="fa-brands fa-react text-xl"></i>, link: 'https://react.dev/' },
+      { name: 'Next.js', icon: <span className="font-serif italic font-bold text-xl">N</span>, link: 'https://nextjs.org/' },
+      { name: 'Tailwind CSS', icon: <span className="font-mono font-bold text-[13px] border-b-[1.5px] border-current pb-0.5">TW</span>, link: 'https://tailwindcss.com/' },
+      { name: 'SQL', icon: <i className="fa-solid fa-database text-lg"></i>, link: 'https://en.wikipedia.org/wiki/SQL' },
+      { name: 'C++', icon: <span className="font-bold text-base">C++</span>, link: 'https://isocpp.org/' },
+      { name: 'PyTorch', icon: <i className="fa-solid fa-fire-flame-simple text-lg"></i>, link: 'https://pytorch.org/' },
+      { name: 'Pandas', icon: <i className="fa-solid fa-table text-lg"></i>, link: 'https://pandas.pydata.org/' },
+      { name: 'NumPy', icon: <i className="fa-solid fa-cubes text-lg"></i>, link: 'https://numpy.org/' },
+      { name: 'NLTK', icon: <i className="fa-solid fa-book-open text-lg"></i>, link: 'https://www.nltk.org/' },
+      { name: 'Sentence Transformers', icon: <i className="fa-solid fa-language text-lg"></i>, link: 'https://sbert.net/' },
+      { name: 'Natural Language Processing', icon: <i className="fa-solid fa-brain text-lg"></i>, link: 'https://en.wikipedia.org/wiki/Natural_language_processing' },
+      { name: 'Full Stack Development', icon: <i className="fa-solid fa-layer-group text-lg"></i>, link: 'https://en.wikipedia.org/wiki/Solution_stack' },
   ];
 
   return (
@@ -35,33 +35,33 @@ export default function Home() {
         <div className="max-w-6xl mx-auto relative z-10">
             
             {/* Interactive Top Header */}
-            <header className="flex justify-end items-center mb-16 relative z-50 h-10">
+            <header className="flex justify-end items-center mb-16 relative z-50 h-10 w-full">
                 
                 {/* Responsive Navigation Menu */}
-                <div className={`absolute top-12 right-0 md:static flex flex-col md:flex-row items-end md:items-center gap-6 md:gap-8 pr-2 md:pr-6 transition-all duration-300 bg-[#333b47] md:bg-transparent p-6 md:p-0 rounded-md md:rounded-none shadow-2xl md:shadow-none border border-[#e6ddc5]/10 md:border-none min-w-[180px] md:min-w-0 ${
-                    menuOpen ? 'opacity-100 translate-y-0 md:translate-x-0 pointer-events-auto' : 'opacity-0 -translate-y-4 md:-translate-y-0 md:translate-x-4 pointer-events-none'
+                <div className={`absolute top-14 right-0 md:static flex flex-col md:flex-row items-end md:items-center gap-6 md:gap-8 transition-all duration-300 bg-[#333b47] md:bg-transparent p-6 md:p-0 rounded-xl md:rounded-none shadow-2xl md:shadow-none border border-[#e6ddc5]/10 md:border-none min-w-[200px] md:min-w-0 z-40 origin-top-right ${
+                    menuOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none md:opacity-100 md:scale-100 md:pointer-events-auto'
                 }`}>
-                    <a href="#about" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">About</a>
-                    <a href="#education" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Education</a>
-                    <a href="#projects" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Projects</a>
-                    <a href="#contact" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Contact</a>
+                    <a href="#about" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors w-full md:w-auto text-right">About</a>
+                    <a href="#education" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors w-full md:w-auto text-right">Education</a>
+                    <a href="#projects" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors w-full md:w-auto text-right">Projects</a>
+                    <a href="#contact" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors w-full md:w-auto text-right">Contact</a>
                     {/* Resume Link */}
-                    <a href="/Rodriguez, Jonatan Resume 2026.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors flex items-center gap-2">
+                    <a href="/Rodriguez, Jonatan Resume 2026.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors flex items-center justify-end gap-2 w-full md:w-auto text-right">
                         Resume <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>
                     </a>
                 </div>
 
-                {/* Animated 2-Line Button */}
+                {/* Animated 2-Line Hamburger Button (Mobile Only) */}
                 <button 
                     onClick={() => setMenuOpen(!menuOpen)} 
-                    className="flex flex-col gap-2.5 items-end cursor-pointer focus:outline-none group p-2 z-50 relative md:hidden ml-4"
+                    className="flex flex-col gap-2.5 items-end cursor-pointer focus:outline-none group p-2 z-50 relative md:hidden ml-6"
                     aria-label="Toggle Menu"
                 >
-                    <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
-                        menuOpen ? 'w-7 rotate-45 translate-y-[5px] bg-[#cfa262]' : 'w-8 group-hover:bg-[#cfa262] group-hover:w-6'
+                    <span className={`h-[1.5px] bg-[#e6ddc5] transition-all duration-300 ${
+                        menuOpen ? 'w-7 rotate-45 translate-y-[5.5px] bg-[#cfa262]' : 'w-8 group-hover:bg-[#cfa262] group-hover:w-6'
                     }`}></span>
-                    <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
-                        menuOpen ? 'w-7 -rotate-45 -translate-y-[6px] bg-[#cfa262]' : 'w-6 group-hover:bg-[#cfa262] group-hover:w-8'
+                    <span className={`h-[1.5px] bg-[#e6ddc5] transition-all duration-300 ${
+                        menuOpen ? 'w-7 -rotate-45 -translate-y-[5.5px] bg-[#cfa262]' : 'w-6 group-hover:bg-[#cfa262] group-hover:w-8'
                     }`}></span>
                 </button>
             </header>
@@ -151,23 +151,24 @@ export default function Home() {
                         {/* Technical Skills - Clean Floating Icons with Tooltips */}
                         <div>
                             <h3 className="text-xl font-bold font-display text-[#e6ddc5] mb-6">Technical Skills</h3>
-                            <div className="flex flex-wrap gap-5 sm:gap-7 justify-center lg:justify-start pt-2">
+                            <div className="flex flex-wrap gap-6 sm:gap-8 justify-center lg:justify-start pt-2">
                                 {technicalSkills.map((skill, index) => (
                                     <a 
                                         key={index} 
                                         href={skill.link} 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
-                                        tabIndex={0}
-                                        className="relative group flex items-center justify-center text-[#e6ddc5]/50 hover:text-[#cfa262] focus:text-[#cfa262] transition-all duration-300 hover:scale-110 focus:scale-110 focus:outline-none hover:drop-shadow-[0_0_8px_rgba(207,162,98,0.5)] focus:drop-shadow-[0_0_8px_rgba(207,162,98,0.5)] cursor-pointer"
+                                        className="relative group flex items-center justify-center text-[#e6ddc5]/50 hover:text-[#cfa262] transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(207,162,98,0.5)] cursor-pointer"
                                     >
-                                        <div className="flex items-center justify-center transition-all duration-300">
+                                        <div className="flex items-center justify-center transition-all duration-300 w-10 h-10">
                                             {skill.icon}
                                         </div>
-                                        {/* Clean Tooltip/Label - Shows on Hover/Focus */}
-                                        <span className="absolute top-full left-1/2 -translate-x-1/2 mt-3 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-300 text-[11px] font-medium tracking-wide bg-[#1e221f] border border-[#e6ddc5]/10 text-[#e6ddc5] px-2.5 py-1 rounded shadow-xl whitespace-nowrap z-20 pointer-events-none flex items-center justify-center">
+                                        {/* Desktop-only Tooltip/Label placed ABOVE the icon to prevent overlap */}
+                                        <div className="hidden md:flex absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[11px] font-medium tracking-wide bg-[#1e221f] border border-[#e6ddc5]/10 text-[#e6ddc5] px-3 py-1.5 rounded-md shadow-2xl whitespace-nowrap z-50 pointer-events-none items-center justify-center">
                                             {skill.name}
-                                        </span>
+                                            {/* Small triangle pointer */}
+                                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-[5px] border-transparent border-t-[#1e221f]"></div>
+                                        </div>
                                     </a>
                                 ))}
                             </div>
