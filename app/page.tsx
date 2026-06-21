@@ -11,15 +11,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen px-6 py-12 md:px-16 md:py-20 relative">
+    <div className="min-h-screen px-6 py-8 md:px-16 md:py-12 relative overflow-hidden font-sans">
         
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
             
             {/* Interactive Top Header */}
-            <header className="flex justify-end items-center mb-16 relative z-50 h-8">
-                {/* Clean navigation links that fade in when menuOpen is true */}
-                <div className={`flex items-center gap-8 pr-6 transition-all duration-300 ${
-                    menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none absolute'
+            <header className="flex justify-end items-center mb-16 relative z-50 h-10">
+                
+                {/* Responsive Navigation Menu */}
+                <div className={`absolute top-12 right-0 md:static flex flex-col md:flex-row items-end md:items-center gap-6 md:gap-8 pr-2 md:pr-6 transition-all duration-300 bg-[#333b47] md:bg-transparent p-6 md:p-0 rounded-md md:rounded-none shadow-2xl md:shadow-none border border-[#e6ddc5]/10 md:border-none min-w-[180px] md:min-w-0 ${
+                    menuOpen ? 'opacity-100 translate-y-0 md:translate-x-0 pointer-events-auto' : 'opacity-0 -translate-y-4 md:-translate-y-0 md:translate-x-4 pointer-events-none'
                 }`}>
                     <a href="#about" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">About</a>
                     <a href="#education" onClick={() => setMenuOpen(false)} className="text-[#e6ddc5]/80 hover:text-[#cfa262] font-display italic text-lg transition-colors">Education</a>
@@ -34,55 +35,56 @@ export default function Home() {
                 {/* Animated 2-Line Button */}
                 <button 
                     onClick={() => setMenuOpen(!menuOpen)} 
-                    className="flex flex-col gap-2 items-end cursor-pointer focus:outline-none group"
+                    className="flex flex-col gap-2.5 items-end cursor-pointer focus:outline-none group p-2 z-50 relative md:hidden ml-4"
+                    aria-label="Toggle Menu"
                 >
                     <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
-                        menuOpen ? 'w-6 rotate-45 translate-y-[4.5px] bg-[#cfa262]' : 'w-8 group-hover:bg-[#cfa262] group-hover:w-6'
+                        menuOpen ? 'w-7 rotate-45 translate-y-[5px] bg-[#cfa262]' : 'w-8 group-hover:bg-[#cfa262] group-hover:w-6'
                     }`}></span>
                     <span className={`h-[1px] bg-[#e6ddc5] transition-all duration-300 ${
-                        menuOpen ? 'w-6 -rotate-45 -translate-y-[4.5px] bg-[#cfa262]' : 'w-6 group-hover:bg-[#cfa262] group-hover:w-8'
+                        menuOpen ? 'w-7 -rotate-45 -translate-y-[6px] bg-[#cfa262]' : 'w-6 group-hover:bg-[#cfa262] group-hover:w-8'
                     }`}></span>
                 </button>
             </header>
 
             {/* Main Top Section */}
-            <main className="mb-32">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <main className="mb-24">
+                <div className="flex flex-col lg:flex-row gap-10 md:gap-12 items-center">
                     
                     {/* Intro Text */}
-                    <div className="order-2 md:order-1 space-y-8">
-                        <div className="space-y-2">
-                            <p className="text-[#cfa262] font-display italic text-xl tracking-wide">Welcome, I am</p>
-                            <h1 className="text-5xl md:text-7xl font-bold tracking-wide leading-none font-display text-[#e6ddc5]">
+                    <div className="w-full lg:w-1/2 order-2 lg:order-1 space-y-8">
+                        <div className="space-y-3">
+                            <p className="text-[#cfa262] font-display italic text-2xl tracking-wide">Welcome, I am</p>
+                            <h1 className="text-6xl lg:text-8xl font-bold tracking-wide leading-none font-display text-[#e6ddc5]">
                                 Jonatan <br />Rodriguez
                             </h1>
                         </div>
                         
-                        <p className="text-lg text-[#e6ddc5]/80 font-light leading-relaxed max-w-md">
+                        <p className="text-xl text-[#e6ddc5]/80 font-light leading-relaxed max-w-lg">
                             A Computer Science graduate from UH and <span className="text-[#cfa262] font-medium">Aspiring Software Engineer</span> specializing in Full Stack Development, NLP, and AI.
                         </p>
 
                         {/* Social Links */}
-                        <div className="flex items-center gap-6 text-xl pt-4">
-                            <a href="https://github.com/Jonardzz" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] transition-colors">
+                        <div className="flex items-center gap-8 text-2xl pt-2">
+                            <a href="https://github.com/Jonardzz" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] hover:-translate-y-1 transition-all duration-300">
                                 <i className="fa-brands fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/jonatan-rodriguez-9872213ba/" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] transition-colors">
+                            <a href="https://www.linkedin.com/in/jonatan-rodriguez-9872213ba/" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] hover:-translate-y-1 transition-all duration-300">
                                 <i className="fa-brands fa-linkedin-in"></i>
                             </a>
-                            <a href="/Rodriguez, Jonatan Resume 2026.pdf" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] transition-colors" title="Resume">
+                            <a href="/Rodriguez, Jonatan Resume 2026.pdf" target="_blank" rel="noopener noreferrer" className="text-[#e6ddc5]/60 hover:text-[#cfa262] hover:-translate-y-1 transition-all duration-300" title="Resume">
                                 <i className="fa-solid fa-scroll"></i>
                             </a>
                         </div>
                     </div>
 
                     {/* Main Top Image */}
-                    <div className="order-1 md:order-2">
-                        <div className="p-3 bg-[#333b47] rounded-sm shadow-2xl border border-[#e6ddc5]/10 transform md:rotate-2 hover:rotate-0 transition-transform duration-700">
+                    <div className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end">
+                        <div className="p-4 md:p-5 bg-[#333b47]/80 rounded-2xl shadow-2xl border border-[#e6ddc5]/10 transform lg:rotate-2 hover:rotate-0 transition-all duration-700 w-full max-w-md flex items-center justify-center">
                             <img 
                                 src="/gifs/Intro3.gif" 
                                 alt="Cinematic Hero" 
-                                className="w-full h-auto rounded-sm opacity-90"
+                                className="w-full h-auto object-contain rounded-xl opacity-90"
                                 style={ghibliSoftGrade}
                             />
                         </div>
@@ -91,48 +93,68 @@ export default function Home() {
             </main>
 
             {/* About Me and Skills Section */}
-            <section id="about" className="mb-32 border-t border-[#e6ddc5]/10 pt-20 scroll-mt-12">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+            <section id="about" className="mb-24 pt-8 scroll-mt-20">
+                {/* Unified Section Header */}
+                <div className="flex items-center gap-6 mb-10">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-[#cfa262]">About</h2>
+                    <div className="h-[1px] flex-grow bg-gradient-to-r from-[#cfa262]/40 to-transparent"></div>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-10 md:gap-12 items-stretch">
                     
                     {/* Side Image for About Section */}
-                    <div className="md:col-span-5 relative">
-                        <div className="sticky top-12 p-2 bg-[#333b47] rounded-full overflow-hidden shadow-xl border border-[#e6ddc5]/5 aspect-square flex items-center justify-center">
-                            <img src="/gifs/G2.gif" alt="About Illustration" className="w-full h-full object-cover rounded-full opacity-80 hover:opacity-100 transition-opacity duration-500" style={ghibliSoftGrade} />
+                    <div className="w-full lg:w-5/12 relative">
+                        <div className="sticky top-20 w-full p-4 md:p-5 bg-[#333b47]/80 rounded-2xl shadow-2xl border border-[#e6ddc5]/5 flex items-center justify-center">
+                            <img 
+                                src="/gifs/G2.gif" 
+                                alt="About Illustration" 
+                                className="w-full h-auto max-h-[60vh] object-contain rounded-xl opacity-80 hover:opacity-100 transition-opacity duration-500" 
+                                style={ghibliSoftGrade} 
+                            />
                         </div>
                     </div>
 
-                    <div className="md:col-span-7 space-y-12">
+                    <div className="w-full lg:w-7/12 flex flex-col justify-center space-y-10 bg-[#333b47]/30 p-8 md:p-10 rounded-2xl border border-[#e6ddc5]/5">
                         
                         {/* About Text */}
-                        <div>
-                            <h2 className="text-3xl font-bold font-display text-[#cfa262] mb-6">About</h2>
-                            <div className="space-y-4 text-[#e6ddc5]/80 leading-relaxed font-light text-lg">
-                                <p>
-                                    I’m a Computer Science graduate from the University of Houston. My interests include full stack development, natural language processing, and software engineering.
-                                </p>
-                                <p>
-                                    I have experience with Python, C++, and SQL, along with hands-on project work in text processing, semantic search, and sentiment analysis. I have built projects that use tools such as PyTorch, Sentence-Transformers, NLTK, Pandas, and NumPy to process data and improve search results.
-                                </p>
-                                <p>
-                                    I’m currently seeking an entry-level software engineering role where I can apply my technical skills, keep learning, and contribute to real-world software solutions.
-                                </p>
-                            </div>
+                        <div className="space-y-5 text-[#e6ddc5]/80 leading-relaxed font-light text-lg">
+                            <p>
+                                I’m a Computer Science graduate from the University of Houston. My interests include full stack development, natural language processing, and software engineering.
+                            </p>
+                            <p>
+                                I have experience with Python, C++, and SQL, along with hands-on project work in text processing, semantic search, and sentiment analysis. I have built projects that use tools such as PyTorch, Sentence-Transformers, NLTK, Pandas, and NumPy to process data and improve search results.
+                            </p>
+                            <p>
+                                I’m currently seeking an entry-level software engineering role where I can apply my technical skills, keep learning, and contribute to real-world software solutions.
+                            </p>
                         </div>
 
                         {/* Skill Links and Badges */}
                         <div>
-                            <h2 className="text-3xl font-bold font-display text-[#cfa262] mb-6">Skills</h2>
-                            <div className="flex flex-wrap gap-2 font-body text-sm">
-                                <a href="https://en.wikipedia.org/wiki/Information_retrieval" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">Information Retrieval (IR)</a>
-                                <a href="https://en.wikipedia.org/wiki/Sentiment_analysis" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">Sentiment Analysis</a>
-                                <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">Python</a>
-                                <a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">C++</a>
-                                <a href="https://en.wikipedia.org/wiki/SQL" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">SQL</a>
-                                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">PyTorch</a>
-                                <a href="https://sbert.net/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">Sentence-Transformers</a>
-                                <a href="https://www.nltk.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">NLTK</a>
-                                <a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">Pandas</a>
-                                <a href="https://numpy.org/" target="_blank" rel="noopener noreferrer" className="px-3 py-1 border border-[#cfa262]/30 bg-[#cfa262]/5 rounded-sm text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] transition-all cursor-pointer">NumPy</a>
+                            <h3 className="text-xl font-bold font-display text-[#e6ddc5] mb-5">Technical Skills</h3>
+                            <div className="flex flex-wrap gap-2.5 font-body text-sm">
+                                {[
+                                    { name: 'Information Retrieval (IR)', link: 'https://en.wikipedia.org/wiki/Information_retrieval' },
+                                    { name: 'Sentiment Analysis', link: 'https://en.wikipedia.org/wiki/Sentiment_analysis' },
+                                    { name: 'Python', link: 'https://www.python.org/' },
+                                    { name: 'C++', link: 'https://isocpp.org/' },
+                                    { name: 'SQL', link: 'https://en.wikipedia.org/wiki/SQL' },
+                                    { name: 'PyTorch', link: 'https://pytorch.org/' },
+                                    { name: 'Sentence-Transformers', link: 'https://sbert.net/' },
+                                    { name: 'NLTK', link: 'https://www.nltk.org/' },
+                                    { name: 'Pandas', link: 'https://pandas.pydata.org/' },
+                                    { name: 'NumPy', link: 'https://numpy.org/' }
+                                ].map((skill, index) => (
+                                    <a 
+                                        key={index} 
+                                        href={skill.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="px-4 py-2 border border-[#cfa262]/30 bg-[#333b47] rounded-lg text-[#e6ddc5]/90 hover:bg-[#cfa262] hover:text-[#1e221f] hover:scale-105 transition-all duration-300 cursor-pointer shadow-sm"
+                                    >
+                                        {skill.name}
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -140,126 +162,154 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Education and Certificates Section */}
-            <section id="education" className="mb-32 pt-20 border-t border-[#e6ddc5]/10 scroll-mt-12 space-y-24">
+            {/* COMBINED SECTION: Education & Certifications */}
+            <section id="education" className="mb-24 pt-12 scroll-mt-20">
+                <div className="flex items-center gap-6 mb-10">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-[#cfa262]">Education & Certifications</h2>
+                    <div className="h-[1px] flex-grow bg-gradient-to-r from-[#cfa262]/20 to-transparent"></div>
+                </div>
                 
-                {/* Horizontal Education Block */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                {/* 1. Academic Background */}
+                <div className="mb-16">
+                    <h3 className="text-2xl font-bold font-display text-[#e6ddc5] mb-6 opacity-90 pl-2 border-l-4 border-[#cfa262]">Academic Background</h3>
                     
-                    {/* Education GIF */}
-                    <div className="lg:col-span-5 order-1 relative group">
-                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-2xl transform lg:-rotate-2 transition-transform duration-500 group-hover:rotate-0 flex justify-center">
-                            <img src="/gifs/education.gif" alt="Education Illustration" className="w-full h-auto object-contain rounded-sm opacity-90" style={ghibliSoftGrade} />
-                        </div>
-                    </div>
-
-                    {/* Education Content */}
-                    <div className="lg:col-span-7 order-2 space-y-6">
-                        <div className="flex items-center gap-4 border-b border-[#e6ddc5]/10 pb-4 mb-8">
-                            <h2 className="text-3xl font-display font-bold text-[#cfa262]">Education</h2>
-                        </div>
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-stretch">
                         
-                        <div className="flex flex-col gap-6">
+                        {/* Natural, Unboxed GIF */}
+                        <div className="w-full lg:w-5/12 flex items-center justify-center relative group p-2">
+                            <img 
+                                src="/gifs/education.gif" 
+                                alt="Education Illustration" 
+                                className="w-full h-auto max-h-[380px] object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100" 
+                                style={ghibliSoftGrade} 
+                            />
+                        </div>
+
+                        {/* Education Cards Stack */}
+                        <div className="w-full lg:w-7/12 flex flex-col gap-5 justify-center">
                             
                             {/* UH Card */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
-                                <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center drop-shadow-md">
-                                    <img src="/UH.png" alt="University of Houston Logo" className="w-full h-full object-contain" />
+                            <div className="bg-[#333b47] rounded-md shadow-lg border border-[#e6ddc5]/5 p-6 flex flex-col sm:flex-row gap-5 items-center sm:items-start hover:-translate-y-1 transition-all duration-300">
+                                {/* Balanced Transparent Logo Container */}
+                                <div className="h-10 sm:h-12 w-28 sm:w-32 flex-shrink-0 flex items-center justify-center sm:justify-start bg-transparent">
+                                    <img src="/UH.png" alt="University of Houston Logo" className="max-h-full max-w-full object-contain object-left drop-shadow-md" />
                                 </div>
-                                <div className="space-y-1">
-                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">University of Houston</h3>
-                                    <p className="text-[#e6ddc5]/80 font-light text-base">Bachelor's Degree, Computer Science</p>
-                                    <p className="text-sm text-[#cfa262] italic">Aug 2024 - May 2026</p>
+                                <div className="flex flex-col w-full text-center sm:text-left mt-2 sm:mt-0">
+                                    <h4 className="font-bold text-[#e6ddc5] text-lg leading-tight mb-1">University of Houston</h4>
+                                    <p className="text-[#e6ddc5]/60 text-sm font-light leading-snug mb-2">Bachelor's Degree, Computer Science</p>
+                                    <p className="text-[13px] text-[#cfa262] italic font-medium">Aug 2024 - May 2026</p>
                                 </div>
                             </div>
 
                             {/* HCC Card */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
-                                <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center drop-shadow-md">
-                                    <img src="/HCC.png" alt="Houston Community College Logo" className="w-full h-full object-contain" />
+                            <div className="bg-[#333b47] rounded-md shadow-lg border border-[#e6ddc5]/5 p-6 flex flex-col sm:flex-row gap-5 items-center sm:items-start hover:-translate-y-1 transition-all duration-300">
+                                {/* Balanced Transparent Logo Container */}
+                                <div className="h-10 sm:h-12 w-28 sm:w-32 flex-shrink-0 flex items-center justify-center sm:justify-start bg-transparent">
+                                    <img src="/HCC.png" alt="Houston Community College Logo" className="max-h-full max-w-full object-contain object-left drop-shadow-md" />
                                 </div>
-                                <div className="space-y-1">
-                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Houston Community College</h3>
-                                    <p className="text-[#e6ddc5]/80 font-light text-base">Associate's Degree, Computer Science</p>
-                                    <p className="text-sm text-[#cfa262] italic">Aug 2022 - May 2024</p>
+                                <div className="flex flex-col w-full text-center sm:text-left mt-2 sm:mt-0">
+                                    <h4 className="font-bold text-[#e6ddc5] text-lg leading-tight mb-1">Houston Community College</h4>
+                                    <p className="text-[#e6ddc5]/60 text-sm font-light leading-snug mb-2">Associate's Degree, Computer Science</p>
+                                    <p className="text-[13px] text-[#cfa262] italic font-medium">Aug 2022 - May 2024</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
-                {/* Horizontal Certifications Block */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                {/* 2. Professional Certifications */}
+                <div>
+                    <h3 className="text-2xl font-bold font-display text-[#e6ddc5] mb-6 opacity-90 pl-2 border-l-4 border-[#cfa262]">Licenses & Certifications</h3>
                     
-                    {/* Certifications Content */}
-                    <div className="lg:col-span-7 order-2 lg:order-1 space-y-6">
-                        <div className="flex items-center gap-4 border-b border-[#e6ddc5]/10 pb-4 mb-8">
-                            <h2 className="text-3xl font-display font-bold text-[#cfa262]">Licenses & Certifications</h2>
-                        </div>
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-center lg:items-stretch">
                         
-                        <div className="flex flex-col gap-6">
+                        {/* Natural, Unboxed GIF */}
+                        <div className="w-full lg:w-5/12 flex items-center justify-center relative group p-2">
+                            <img 
+                                src="/gifs/Education.webp" 
+                                alt="Licenses & Certifications Illustration" 
+                                className="w-full h-auto max-h-[450px] object-contain opacity-90 transition-opacity duration-500 group-hover:opacity-100" 
+                                style={ghibliSoftGrade} 
+                            />
+                        </div>
+
+                        {/* Certification Cards Stack */}
+                        <div className="w-full lg:w-7/12 flex flex-col gap-4 justify-center">
                             
                             {/* AWS Cert */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
-                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center shadow-inner border border-[#cfa262]/20">
-                                    <i className="fa-brands fa-aws text-4xl text-[#232F3E]"></i>
-                                </div>
-                                <div className="space-y-2">
-                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Fundamentals of Machine Learning & AI</h3>
-                                    <p className="text-[#e6ddc5]/80 font-light text-sm flex items-center gap-2">
-                                        Amazon Web Services (AWS) <span className="text-[#e6ddc5]/20">•</span> <span className="text-[#cfa262] italic">May 2026</span>
+                            <div className="bg-[#333b47] rounded-md shadow-lg border border-[#e6ddc5]/5 p-5 flex flex-col sm:flex-row gap-5 items-start hover:-translate-y-1 transition-all duration-300">
+                                {/* TODO: Replace href="#" with official AWS Machine Learning course link */}
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 w-12 h-12 flex items-center justify-center hover:scale-105 transition-transform" title="View Official Course">
+                                    <i className="fa-brands fa-aws text-4xl sm:text-5xl text-[#e6ddc5] opacity-90"></i>
+                                </a>
+                                <div className="flex flex-col">
+                                    {/* TODO: Replace href="#" with official AWS Machine Learning course link */}
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="font-bold text-[#e6ddc5] text-[17px] leading-tight mb-1 hover:text-[#cfa262] transition-colors flex items-center gap-2 group w-fit">
+                                        Fundamentals of Machine Learning & AI
+                                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </a>
+                                    <p className="text-[#e6ddc5]/80 text-[13px] font-light mb-2 flex items-center gap-1.5 flex-wrap">
+                                        Amazon Web Services (AWS) <span className="text-[#cfa262]/50">•</span> <span className="text-[#cfa262] italic font-medium">May 2026</span>
                                     </p>
-                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
+                                    <p className="text-xs text-[#e6ddc5]/60 font-light leading-relaxed">
                                         Deep dive into the core mechanisms of modern AI/ML systems powered by AWS. Covered deep learning neural networks, generative AI architectures, and practical cloud deployment.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Anthropic Cert 1 */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
-                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center p-2 shadow-inner border border-[#cfa262]/20">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain" />
-                                </div>
-                                <div className="space-y-2">
-                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Claude 101</h3>
-                                    <p className="text-[#e6ddc5]/80 font-light text-sm">Anthropic</p>
-                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
+                            <div className="bg-[#333b47] rounded-md shadow-lg border border-[#e6ddc5]/5 p-5 flex flex-col sm:flex-row gap-5 items-start hover:-translate-y-1 transition-all duration-300">
+                                {/* TODO: Replace href="#" with official Anthropic Claude 101 course link */}
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 w-12 h-12 flex items-center justify-center hover:scale-105 transition-transform" title="View Official Course">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain brightness-0 invert opacity-90" />
+                                </a>
+                                <div className="flex flex-col">
+                                    {/* TODO: Replace href="#" with official Anthropic Claude 101 course link */}
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="font-bold text-[#e6ddc5] text-[17px] leading-tight mb-1 hover:text-[#cfa262] transition-colors flex items-center gap-2 group w-fit">
+                                        Claude 101
+                                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </a>
+                                    <p className="text-[#e6ddc5]/80 text-[13px] font-light mb-2 flex items-center gap-1.5 flex-wrap">
+                                        Anthropic <span className="text-[#cfa262]/50">•</span> <span className="text-[#cfa262] italic font-medium">June 2026</span>
+                                    </p>
+                                    <p className="text-xs text-[#e6ddc5]/60 font-light leading-relaxed">
                                         Foundational training in Anthropic's Claude AI. Covered practical prompt engineering, utilizing Projects and Artifacts for workflow organization, and applying Generative AI to streamline everyday business tasks.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Anthropic Cert 2 */}
-                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
-                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center p-2 shadow-inner border border-[#cfa262]/20">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain" />
-                                </div>
-                                <div className="space-y-2">
-                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">AI Fluency: Framework & Foundations</h3>
-                                    <p className="text-[#e6ddc5]/80 font-light text-sm">Anthropic</p>
-                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
-                                        Developed by Anthropic with University College Cork and Ringling College of Art and Design, this course covers the AI Fluency Framework. It focuses on the four key areas of Delegation, Description, Discernment, and Diligence. These skills help build practical habits for working with AI in ways that are effective, efficient, ethical, and safe across creative and business tasks.
+                            <div className="bg-[#333b47] rounded-md shadow-lg border border-[#e6ddc5]/5 p-5 flex flex-col sm:flex-row gap-5 items-start hover:-translate-y-1 transition-all duration-300">
+                                {/* TODO: Replace href="#" with official Anthropic AI Fluency course link */}
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 w-12 h-12 flex items-center justify-center hover:scale-105 transition-transform" title="View Official Course">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain brightness-0 invert opacity-90" />
+                                </a>
+                                <div className="flex flex-col">
+                                    {/* TODO: Replace href="#" with official Anthropic AI Fluency course link */}
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="font-bold text-[#e6ddc5] text-[17px] leading-tight mb-1 hover:text-[#cfa262] transition-colors flex items-center gap-2 group w-fit">
+                                        AI Fluency: Framework & Foundations
+                                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                                    </a>
+                                    <p className="text-[#e6ddc5]/80 text-[13px] font-light mb-2 flex items-center gap-1.5 flex-wrap">
+                                        Anthropic <span className="text-[#cfa262]/50">•</span> <span className="text-[#cfa262] italic font-medium">June 2026</span>
+                                    </p>
+                                    <p className="text-xs text-[#e6ddc5]/60 font-light leading-relaxed">
+                                        Developed by Anthropic with University College Cork and Ringling College of Art and Design, this course covers the AI Fluency Framework. It focuses on the four key areas of Delegation, Description, Discernment, and Diligence.
                                     </p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-                    {/* Certifications GIF */}
-                    <div className="lg:col-span-5 order-1 lg:order-2 relative group">
-                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-2xl transform lg:rotate-2 transition-transform duration-500 group-hover:rotate-0 flex justify-center">
-                            <img src="/gifs/Education.webp" alt="Licenses & Certifications Illustration" className="w-full h-auto object-contain rounded-sm opacity-90" style={ghibliSoftGrade} />
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
             {/* My Projects Section */}
             <section id="projects" className="mb-24 pt-12 border-t border-[#e6ddc5]/10 scroll-mt-12">
-                <h2 className="text-3xl font-bold font-display text-[#e6ddc5] mb-8">Projects</h2>
+                <div className="flex items-center gap-6 mb-10">
+                    <h2 className="text-3xl font-bold font-display text-[#e6ddc5]">Projects</h2>
+                    <div className="h-[1px] flex-grow bg-gradient-to-r from-[#e6ddc5]/10 to-transparent"></div>
+                </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     
@@ -328,65 +378,89 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Spoken Languages Section */}
-            <section className="mb-32">
-                <h2 className="text-3xl font-bold font-display text-[#cfa262] mb-8 text-center md:text-left">Languages</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-6 rounded-sm flex justify-between items-center shadow-lg">
-                        <span className="text-[#e6ddc5] font-light text-lg">English</span>
-                        <span className="text-[#cfa262] text-sm italic">Full professional proficiency</span>
-                    </div>
-                    <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-6 rounded-sm flex justify-between items-center shadow-lg">
-                        <span className="text-[#e6ddc5] font-light text-lg">Spanish</span>
-                        <span className="text-[#cfa262] text-sm italic">Native or bilingual proficiency</span>
-                    </div>
+            {/* Spoken Languages Section (Communication Toolkit Style) */}
+            <section className="mb-24 pt-12 border-t border-[#e6ddc5]/10">
+                <div className="flex items-center gap-6 mb-8">
+                    <h2 className="text-3xl font-bold font-display text-[#cfa262]">Languages</h2>
+                    <div className="h-[1px] flex-grow bg-gradient-to-r from-[#cfa262]/20 to-transparent"></div>
                 </div>
-            </section>
-
-            {/* Email Form Section */}
-            <section id="contact" className="border-t border-[#e6ddc5]/10 pt-20 pb-12 scroll-mt-12">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center bg-[#333b47] p-8 md:p-12 rounded-sm border border-[#e6ddc5]/5 shadow-2xl relative overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     
-                    <div className="md:col-span-6 space-y-6 relative z-10">
-                        <h2 className="text-3xl md:text-4xl font-bold font-display text-[#cfa262]">Contact info</h2>
-                        <p className="text-lg text-[#e6ddc5]/80 font-light leading-relaxed">
-                            I am open to work and actively seeking entry-level software engineering roles (On-site, Hybrid, or Remote). Got a question or want to get connected? Let's talk.
-                        </p>
-                        
-                        {/* Connected Formspree Form */}
-                        <form action="https://formspree.io/f/mojrblqo" method="POST" className="space-y-6 pt-4">
-                            <div className="relative">
-                                <input type="text" name="name" required placeholder="Your Name" className="w-full bg-transparent border-b border-[#e6ddc5]/20 py-2 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light" />
-                            </div>
-                            <div className="relative">
-                                <input type="email" name="email" required placeholder="Your Email" className="w-full bg-transparent border-b border-[#e6ddc5]/20 py-2 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light" />
-                            </div>
-                            <div className="relative">
-                                <textarea name="message" required rows={3} placeholder="Your Message" className="w-full bg-transparent border-b border-[#e6ddc5]/20 py-2 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light resize-none"></textarea>
-                            </div>
-                            <button type="submit" className="bg-[#cfa262] text-[#1e221f] px-8 py-3 rounded-sm hover:bg-[#e6ddc5] transition-all font-display text-lg tracking-wide font-bold shadow-lg">
-                                Send Message
-                            </button>
-                        </form>
+                    {/* English Badge */}
+                    <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-5 rounded-md flex items-center gap-5 shadow-lg relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+                        {/* Glow Accent Line */}
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#cfa262] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        {/* Clean Typographic Badge */}
+                        <div className="w-12 h-12 flex-shrink-0 rounded-full bg-[#2a313d] flex items-center justify-center text-[#cfa262] border border-[#e6ddc5]/10 shadow-inner">
+                            <span className="font-serif font-bold tracking-wide">EN</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <h3 className="text-[#e6ddc5] font-bold text-lg leading-tight mb-1">English</h3>
+                            <span className="text-[#e6ddc5]/60 text-sm font-light">Full professional proficiency</span>
+                        </div>
                     </div>
 
-                    {/* Image next to email form (Case Fixed) */}
-                    <div className="md:col-span-6 md:pl-12">
-                        <div className="relative p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 transform md:-rotate-2 shadow-xl">
-                            <img 
-                                src="/gifs/Mail 2.gif" 
-                                alt="Contact Info Delivery" 
-                                className="w-full h-auto opacity-90 rounded-sm"
-                                style={ghibliSoftGrade}
-                            />
+                    {/* Spanish Badge */}
+                    <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-5 rounded-md flex items-center gap-5 shadow-lg relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+                        {/* Glow Accent Line */}
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#cfa262] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        {/* Clean Typographic Badge */}
+                        <div className="w-12 h-12 flex-shrink-0 rounded-full bg-[#2a313d] flex items-center justify-center text-[#cfa262] border border-[#e6ddc5]/10 shadow-inner">
+                            <span className="font-serif font-bold tracking-wide">ES</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <h3 className="text-[#e6ddc5] font-bold text-lg leading-tight mb-1">Spanish</h3>
+                            <span className="text-[#e6ddc5]/60 text-sm font-light">Native or bilingual proficiency</span>
                         </div>
                     </div>
 
                 </div>
             </section>
 
+            {/* Modern Split-Layout Contact Section */}
+            <section id="contact" className="mb-24 pt-12 border-t border-[#e6ddc5]/10 scroll-mt-12">
+                <div className="bg-[#333b47] rounded-md border border-[#e6ddc5]/5 shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch">
+                    
+                    {/* Left Side: Context & Visuals */}
+                    <div className="w-full md:w-5/12 bg-[#2a313d]/50 p-8 md:p-10 flex flex-col justify-between relative border-b md:border-b-0 md:border-r border-[#e6ddc5]/5">
+                        <div className="relative z-10 space-y-6 mb-8">
+                            <h2 className="text-3xl md:text-4xl font-bold font-display text-[#cfa262]">Let's Connect</h2>
+                            <p className="text-base text-[#e6ddc5]/80 font-light leading-relaxed">
+                                I am open to work and actively seeking entry-level software engineering roles (On-site, Hybrid, or Remote). Got a question or want to get connected? Let's talk.
+                            </p>
+                        </div>
+                        {/* Contact GIF securely embedded without cropping */}
+                        <div className="relative w-full max-w-[200px] mx-auto flex justify-center items-center opacity-90 group-hover:opacity-100 transition-opacity">
+                            <img src="/gifs/Mail 2.gif" alt="Contact Delivery" className="w-full h-auto object-contain drop-shadow-2xl" style={ghibliSoftGrade} />
+                        </div>
+                    </div>
+                    
+                    {/* Right Side: Clean Modern Form */}
+                    <div className="w-full md:w-7/12 p-8 md:p-10 flex flex-col justify-center bg-[#333b47]/20">
+                        <form action="https://formspree.io/f/mojrblqo" method="POST" className="space-y-5">
+                            <div className="space-y-1.5">
+                                <label className="text-xs text-[#e6ddc5]/50 uppercase tracking-widest font-semibold ml-1">Name</label>
+                                <input type="text" name="name" required className="w-full bg-[#2a313d] border border-[#e6ddc5]/10 rounded-md px-4 py-3 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light shadow-inner" />
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-xs text-[#e6ddc5]/50 uppercase tracking-widest font-semibold ml-1">Email</label>
+                                <input type="email" name="email" required className="w-full bg-[#2a313d] border border-[#e6ddc5]/10 rounded-md px-4 py-3 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light shadow-inner" />
+                            </div>
+                            <div className="space-y-1.5">
+                                <label className="text-xs text-[#e6ddc5]/50 uppercase tracking-widest font-semibold ml-1">Message</label>
+                                <textarea name="message" required rows={4} className="w-full bg-[#2a313d] border border-[#e6ddc5]/10 rounded-md px-4 py-3 text-[#e6ddc5] placeholder-[#e6ddc5]/30 focus:outline-none focus:border-[#cfa262] transition-colors font-light resize-none shadow-inner"></textarea>
+                            </div>
+                            <button type="submit" className="w-full bg-[#cfa262] text-[#1e221f] px-8 py-3.5 rounded-md hover:bg-[#e6ddc5] transition-all font-display text-lg tracking-wide font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 mt-2">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
             {/* Footer Section */}
-            <footer className="py-8 mt-12 border-t border-[#e6ddc5]/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <footer className="py-8 border-t border-[#e6ddc5]/10 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-[#e6ddc5]/40 text-sm font-light">
                     © {new Date().getFullYear()} Jonatan Rodriguez. All rights reserved.
                 </p>
