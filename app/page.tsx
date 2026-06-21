@@ -59,7 +59,7 @@ export default function Home() {
                         </div>
                         
                         <p className="text-lg text-[#e6ddc5]/80 font-light leading-relaxed max-w-md">
-                            A Computer Science student @ UH and <span className="text-[#cfa262] font-medium">Aspiring Software Engineer</span> specializing in Full Stack Development, NLP, and AI.
+                            A Computer Science graduate from UH and <span className="text-[#cfa262] font-medium">Aspiring Software Engineer</span> specializing in Full Stack Development, NLP, and AI.
                         </p>
 
                         {/* Social Links */}
@@ -108,7 +108,7 @@ export default function Home() {
                             <h2 className="text-3xl font-bold font-display text-[#cfa262] mb-6">About</h2>
                             <div className="space-y-4 text-[#e6ddc5]/80 leading-relaxed font-light text-lg">
                                 <p>
-                                    I’m a Computer Science student at the University of Houston, graduating in May 2026. My interests include full stack development, natural language processing, and software engineering.
+                                    I’m a Computer Science graduate from the University of Houston. My interests include full stack development, natural language processing, and software engineering.
                                 </p>
                                 <p>
                                     I have experience with Python, C++, and SQL, along with hands-on project work in text processing, semantic search, and sentiment analysis. I have built projects that use tools such as PyTorch, Sentence-Transformers, NLTK, Pandas, and NumPy to process data and improve search results.
@@ -140,48 +140,117 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* School and Certificates Section */}
-            <section id="education" className="mb-32 pt-20 border-t border-[#e6ddc5]/10 scroll-mt-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            {/* Education and Certificates Section */}
+            <section id="education" className="mb-32 pt-20 border-t border-[#e6ddc5]/10 scroll-mt-12 space-y-24">
+                
+                {/* Horizontal Education Block */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
                     
-                    {/* Left Box: School */}
-                    <div className="space-y-6">
-                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-xl transform md:-rotate-1 transition-transform hover:rotate-0">
-                            <img src="/gifs/education.gif" alt="Education" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliSoftGrade} />
-                        </div>
-                        <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-8 rounded-sm shadow-lg space-y-8">
-                            <h2 className="text-2xl font-display font-bold text-[#cfa262] border-b border-[#e6ddc5]/10 pb-4">Education</h2>
-                            
-                            <div className="space-y-2 border-l-2 border-[#cfa262]/40 pl-4">
-                                <h3 className="font-bold text-lg text-[#e6ddc5]">University of Houston</h3>
-                                <p className="text-[#e6ddc5]/80 font-light">Bachelor's Degree, Computer Science</p>
-                                <p className="text-sm text-[#cfa262] italic">Aug 2024 - May 2026</p>
-                            </div>
-
-                            <div className="space-y-2 border-l-2 border-[#e6ddc5]/20 pl-4">
-                                <h3 className="font-bold text-lg text-[#e6ddc5]">Houston Community College</h3>
-                                <p className="text-[#e6ddc5]/80 font-light">Associate's Degree, Computer Science</p>
-                                <p className="text-sm text-[#cfa262] italic">Aug 2022 - May 2024</p>
-                            </div>
+                    {/* Education GIF */}
+                    <div className="lg:col-span-5 order-1 relative group">
+                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-2xl transform lg:-rotate-2 transition-transform duration-500 group-hover:rotate-0 flex justify-center">
+                            <img src="/gifs/education.gif" alt="Education Illustration" className="w-full h-auto object-contain rounded-sm opacity-90" style={ghibliSoftGrade} />
                         </div>
                     </div>
 
-                    {/* Right Box: Certificates */}
-                    <div className="space-y-6">
-                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-xl transform md:rotate-1 transition-transform hover:rotate-0">
-                            <img src="/gifs/Education.webp" alt="Licenses & Certifications" className="w-full h-56 object-cover rounded-sm opacity-90" style={ghibliSoftGrade} />
+                    {/* Education Content */}
+                    <div className="lg:col-span-7 order-2 space-y-6">
+                        <div className="flex items-center gap-4 border-b border-[#e6ddc5]/10 pb-4 mb-8">
+                            <h2 className="text-3xl font-display font-bold text-[#cfa262]">Education</h2>
                         </div>
-                        <div className="bg-[#333b47] border border-[#e6ddc5]/5 p-8 rounded-sm shadow-lg space-y-8">
-                            <h2 className="text-2xl font-display font-bold text-[#cfa262] border-b border-[#e6ddc5]/10 pb-4">Licenses & certifications</h2>
+                        
+                        <div className="flex flex-col gap-6">
                             
-                            <div className="space-y-3 border-l-2 border-[#cfa262]/40 pl-4">
-                                <h3 className="font-bold text-lg text-[#e6ddc5] leading-snug">Fundamentals of Machine Learning & AI</h3>
-                                <p className="text-[#e6ddc5]/80 font-light">Amazon Web Services (AWS)</p>
-                                <p className="text-sm text-[#cfa262] italic">Issued May 2026</p>
-                                <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed pt-2">
-                                    Deep dive into the core mechanisms of modern AI/ML systems powered by AWS. Covered deep learning neural networks, generative AI architectures, and practical cloud deployment.
-                                </p>
+                            {/* UH Card */}
+                            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center drop-shadow-md">
+                                    <img src="/UH.png" alt="University of Houston Logo" className="w-full h-full object-contain" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">University of Houston</h3>
+                                    <p className="text-[#e6ddc5]/80 font-light text-base">Bachelor's Degree, Computer Science</p>
+                                    <p className="text-sm text-[#cfa262] italic">Aug 2024 - May 2026</p>
+                                </div>
                             </div>
+
+                            {/* HCC Card */}
+                            <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center drop-shadow-md">
+                                    <img src="/HCC.png" alt="Houston Community College Logo" className="w-full h-full object-contain" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Houston Community College</h3>
+                                    <p className="text-[#e6ddc5]/80 font-light text-base">Associate's Degree, Computer Science</p>
+                                    <p className="text-sm text-[#cfa262] italic">Aug 2022 - May 2024</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                {/* Horizontal Certifications Block */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                    
+                    {/* Certifications Content */}
+                    <div className="lg:col-span-7 order-2 lg:order-1 space-y-6">
+                        <div className="flex items-center gap-4 border-b border-[#e6ddc5]/10 pb-4 mb-8">
+                            <h2 className="text-3xl font-display font-bold text-[#cfa262]">Licenses & Certifications</h2>
+                        </div>
+                        
+                        <div className="flex flex-col gap-6">
+                            
+                            {/* AWS Cert */}
+                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
+                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center shadow-inner border border-[#cfa262]/20">
+                                    <i className="fa-brands fa-aws text-4xl text-[#232F3E]"></i>
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Fundamentals of Machine Learning & AI</h3>
+                                    <p className="text-[#e6ddc5]/80 font-light text-sm flex items-center gap-2">
+                                        Amazon Web Services (AWS) <span className="text-[#e6ddc5]/20">•</span> <span className="text-[#cfa262] italic">May 2026</span>
+                                    </p>
+                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
+                                        Deep dive into the core mechanisms of modern AI/ML systems powered by AWS. Covered deep learning neural networks, generative AI architectures, and practical cloud deployment.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Anthropic Cert 1 */}
+                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
+                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center p-2 shadow-inner border border-[#cfa262]/20">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">Claude 101</h3>
+                                    <p className="text-[#e6ddc5]/80 font-light text-sm">Anthropic</p>
+                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
+                                        Foundational training in Anthropic's Claude AI. Covered practical prompt engineering, utilizing Projects and Artifacts for workflow organization, and applying Generative AI to streamline everyday business tasks.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Anthropic Cert 2 */}
+                            <div className="flex flex-col sm:flex-row gap-5 items-start bg-[#333b47] p-6 rounded-sm border border-[#e6ddc5]/5 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-[#cfa262]/30 transition-all duration-300">
+                                <div className="w-16 h-16 flex-shrink-0 bg-[#e6ddc5] rounded-sm flex items-center justify-center p-2 shadow-inner border border-[#cfa262]/20">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic Logo" className="w-full h-full object-contain" />
+                                </div>
+                                <div className="space-y-2">
+                                    <h3 className="font-bold text-xl text-[#e6ddc5] leading-tight">AI Fluency: Framework & Foundations</h3>
+                                    <p className="text-[#e6ddc5]/80 font-light text-sm">Anthropic</p>
+                                    <p className="text-sm text-[#e6ddc5]/60 font-light leading-relaxed">
+                                        Developed by Anthropic with University College Cork and Ringling College of Art and Design, this course covers the AI Fluency Framework. It focuses on the four key areas of Delegation, Description, Discernment, and Diligence. These skills help build practical habits for working with AI in ways that are effective, efficient, ethical, and safe across creative and business tasks.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {/* Certifications GIF */}
+                    <div className="lg:col-span-5 order-1 lg:order-2 relative group">
+                        <div className="p-2 bg-[#2a313d] rounded-sm border border-[#e6ddc5]/10 shadow-2xl transform lg:rotate-2 transition-transform duration-500 group-hover:rotate-0 flex justify-center">
+                            <img src="/gifs/Education.webp" alt="Licenses & Certifications Illustration" className="w-full h-auto object-contain rounded-sm opacity-90" style={ghibliSoftGrade} />
                         </div>
                     </div>
 
