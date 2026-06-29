@@ -69,8 +69,8 @@ export default function Home() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[#05070a]">
       
-      {/* FULL-PAGE GRAINIENT BACKGROUND */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* FULL-PAGE GRAINIENT BACKGROUND - Optimized for mobile scroll */}
+      <div className="fixed top-0 left-0 w-full h-[100dvh] z-0 pointer-events-none">
         <Grainient
           color1="#2a313d"
           color2="#8e8e8e"
@@ -400,7 +400,7 @@ export default function Home() {
                 {/* My Projects Section */}
                 <section id="projects" className="mb-24 pt-12 border-t border-[#e6ddc5]/10 scroll-mt-12">
                     <div className="flex items-center gap-6 mb-10">
-                        <h2 className="text-3xl font-bold font-display text-[#cfa262]">Projects</h2>
+                        <h2 className="text-3xl font-bold font-display text-[#e6ddc5]">Projects</h2>
                         <div className="h-[1px] flex-grow bg-gradient-to-r from-[#e6ddc5]/10 to-transparent"></div>
                     </div>
                     

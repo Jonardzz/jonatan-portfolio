@@ -134,11 +134,15 @@ const Grainient = ({
     const container = containerRef.current;
     if (!container) return;
 
+    // OPTIMIZATION: Cap Pixel Ratio to 1 on mobile to prevent GPU overload and battery drain
+    const isMobile = window.innerWidth < 768;
+    const renderDpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+
     const renderer = new Renderer({
       webgl: 2,
       alpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
+      dpr: renderDpr
     });
 
     const gl = renderer.gl;
