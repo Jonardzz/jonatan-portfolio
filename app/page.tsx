@@ -1,5 +1,6 @@
-"use client"; // This line lets us use click events and state
-import { useState, useRef } from 'react';
+"use client";
+
+import { useState, useRef, useEffect } from 'react';
 import Grainient from '@/components/Grainient';
 import { Button } from "@/components/ui/stateful-button";
 
@@ -7,6 +8,14 @@ export default function Home() {
   // This state tracks if the navigation menu is open or closed
   const [menuOpen, setMenuOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Forces the page to the top on every refresh
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   // Adds a soft, clean watercolor tone to match your paintbrush GIF
   const ghibliSoftGrade = {
@@ -103,7 +112,7 @@ export default function Home() {
       <main className="relative z-10 px-6 py-8 md:px-16 md:py-12">
         <div className="max-w-6xl mx-auto relative z-10">
             
-            {/* Interactive Top Header */}
+            {/* Interactive Top Header - Reverted to justify-end */}
             <header className="flex justify-end items-center mb-16 relative z-50 h-10 w-full">
                 
                 {/* Responsive Navigation Menu */}
