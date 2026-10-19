@@ -204,6 +204,9 @@ const Grainient = ({
     let raf = 0;
     let isVisible = true;
     let isPageVisible = !document.hidden;
+    // Reduced motion: render one still frame (setSize already drew it) and don't loop
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reduceMotion = motionQuery.matches;
     const t0 = performance.now();
 
     const loop = t => {
@@ -213,7 +216,7 @@ const Grainient = ({
     };
 
     const tryStart = () => {
-      if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop);
+      if (!reduceMotion && isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop);
     };
 
     const tryStop = () => {
@@ -240,6 +243,12 @@ const Grainient = ({
 
     document.addEventListener('visibilitychange', onVisibility);
 
+    const onMotionPref = e => {
+      reduceMotion = e.matches;
+      reduceMotion ? tryStop() : tryStart();
+    };
+    motionQuery.addEventListener('change', onMotionPref);
+
     tryStart();
 
     return () => {
@@ -247,6 +256,7 @@ const Grainient = ({
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
+      motionQuery.removeEventListener('change', onMotionPref);
       ctxMap.delete(container);
       try {
         container.removeChild(canvas);

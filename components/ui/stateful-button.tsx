@@ -1,168 +1,143 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React from "react";
-import { motion, AnimatePresence, useAnimate } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type Status = "idle" | "loading" | "success" | "error";
+
+interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
   className?: string;
   children: React.ReactNode;
+  /** May return a promise: resolve shows success, reject shows an error state. */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
-export const Button = ({ className, children, ...props }: ButtonProps) => {
-  const [scope, animate] = useAnimate();
+// Strong ease-out (emil-design-eng): instant response, soft landing
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
-  const animateLoading = async () => {
-    await animate(
-      ".loader",
-      {
-        width: "20px",
-        scale: 1,
-        display: "block",
-      },
-      {
-        duration: 0.2,
-      },
-    );
-  };
+const STATUS_LABEL: Record<Status, string> = {
+  idle: "",
+  loading: "Sending…",
+  success: "Sent",
+  error: "Something went wrong, please try again",
+};
 
-  const animateSuccess = async () => {
-    await animate(
-      ".loader",
-      {
-        width: "0px",
-        scale: 0,
-        display: "none",
-      },
-      {
-        duration: 0.2,
-      },
-    );
-    await animate(
-      ".check",
-      {
-        width: "20px",
-        scale: 1,
-        display: "block",
-      },
-      {
-        duration: 0.2,
-      },
-    );
+export const Button = ({
+  className,
+  children,
+  onClick,
+  disabled,
+  ...buttonProps
+}: ButtonProps) => {
+  const [status, setStatus] = useState<Status>("idle");
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const reduceMotion = useReducedMotion();
 
-    await animate(
-      ".check",
-      {
-        width: "0px",
-        scale: 0,
-        display: "none",
-      },
-      {
-        delay: 2,
-        duration: 0.2,
-      },
-    );
-  };
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    await animateLoading();
-    await props.onClick?.(event);
-    await animateSuccess();
+    if (status === "loading") return;
+    clearTimeout(timer.current);
+    setStatus("loading");
+    try {
+      await onClick?.(event);
+      setStatus("success");
+      timer.current = setTimeout(() => setStatus("idle"), 2000);
+    } catch {
+      // Previously a rejection left the spinner running forever.
+      setStatus("error");
+      timer.current = setTimeout(() => setStatus("idle"), 1200);
+    }
   };
 
-  const {
-    onClick,
-    onDrag,
-    onDragStart,
-    onDragEnd,
-    onAnimationStart,
-    onAnimationEnd,
-    ...buttonProps
-  } = props;
+  // Never from scale(0): start slightly smaller + blurred, then crossfade.
+  // Reduced motion keeps the fade and drops the scale/blur.
+  const hidden = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, transform: "scale(0.8)", filter: "blur(2px)" };
+  const shown = reduceMotion
+    ? { opacity: 1 }
+    : { opacity: 1, transform: "scale(1)", filter: "blur(0px)" };
+  const transition = { duration: 0.18, ease: EASE_OUT };
 
   return (
-    <motion.button
-      layout
-      layoutId="button"
-      ref={scope}
+    <button
+      {...buttonProps}
+      disabled={disabled || status === "loading"}
+      aria-busy={status === "loading"}
+      onClick={handleClick}
       className={cn(
-        "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full bg-green-500 px-4 py-2 font-medium text-white ring-offset-2 transition duration-200 hover:ring-2 hover:ring-green-500 dark:ring-offset-black",
+        "relative inline-flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 font-medium",
+        "transition-[background-color,scale] duration-150 ease-out-strong active:scale-[0.97]",
+        "disabled:cursor-wait focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current",
         className,
       )}
-      {...buttonProps}
-      onClick={handleClick}
     >
-      <motion.div layout className="flex items-center gap-2">
-        <Loader />
-        <CheckIcon />
-        <motion.span layout>{children}</motion.span>
-      </motion.div>
-    </motion.button>
+      {/* Label stays in flow so the button never changes width */}
+      <motion.span
+        className="inline-flex items-center gap-2"
+        initial={false}
+        animate={status === "idle" ? shown : hidden}
+        transition={transition}
+      >
+        {children}
+      </motion.span>
+
+      <AnimatePresence initial={false}>
+        {status !== "idle" && (
+          <motion.span
+            key={status}
+            aria-hidden
+            className="absolute inset-0 flex items-center justify-center"
+            initial={hidden}
+            animate={shown}
+            exit={hidden}
+            transition={transition}
+          >
+            {status === "loading" && <Loader />}
+            {status === "success" && <CheckIcon />}
+            {status === "error" && <ErrorIcon />}
+          </motion.span>
+        )}
+      </AnimatePresence>
+
+      <span className="sr-only" aria-live="polite">
+        {STATUS_LABEL[status]}
+      </span>
+    </button>
   );
 };
 
-const Loader = () => {
-  return (
-    <motion.svg
-      animate={{
-        rotate: [0, 360],
-      }}
-      initial={{
-        scale: 0,
-        width: 0,
-        display: "none",
-      }}
-      style={{
-        scale: 0.5,
-        display: "none",
-      }}
-      transition={{
-        duration: 0.3,
-        repeat: Infinity,
-        ease: "linear",
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="loader text-white"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3a9 9 0 1 0 9 9" />
-    </motion.svg>
-  );
+const iconProps = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: 22,
+  height: 22,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
 };
 
-const CheckIcon = () => {
-  return (
-    <motion.svg
-      initial={{
-        scale: 0,
-        width: 0,
-        display: "none",
-      }}
-      style={{
-        scale: 0.5,
-        display: "none",
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="check text-white"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-      <path d="M9 12l2 2l4 -4" />
-    </motion.svg>
-  );
-};
+// CSS spin runs off the main thread, so it stays smooth while the fetch runs.
+const Loader = () => (
+  <svg {...iconProps} className="animate-spin [animation-duration:600ms]">
+    <path d="M12 3a9 9 0 1 0 9 9" />
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M9 12l2 2l4 -4" />
+  </svg>
+);
+
+const ErrorIcon = () => (
+  <svg {...iconProps}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M10 10l4 4m0 -4l-4 4" />
+  </svg>
+);

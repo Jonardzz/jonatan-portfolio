@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+/* Strong custom curves (emil-design-eng) -> `ease-out-strong`, `ease-in-out-strong` utilities */
+@theme {
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 html, body {
   min-height: 100%;
-  overflow-x: hidden;
+  /* clip (not hidden) so position: sticky keeps working */
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -19,3 +26,50 @@ body {
   /* Subtle paper grain texture */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
 }
+
+/* Reduced motion: gentler, not zero. Keep color/opacity fades, drop movement. */
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-property: color, background-color, border-color, opacity !important;
+  }
+}
+
+/* Hero name drawing (components/v2/drawn-name.tsx). Rare, once-per-visit
+   motion, so it can take its time: outline traces in, then the fill lands. */
+.drawn-name {
+  filter: drop-shadow(0 2px 24px rgba(9, 9, 11, 0.4));
+}
+.drawn-name text {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation:
+    name-draw 1.8s cubic-bezier(0.77, 0, 0.175, 1) 0.15s forwards,
+    name-fill 0.7s cubic-bezier(0.23, 1, 0.32, 1) 1.45s forwards;
+}
+.drawn-name text + text {
+  animation-delay: 0.45s, 1.75s;
+}
+@keyframes name-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes name-fill {
+  to {
+    fill: #fff;
+    stroke-opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawn-name text {
+    animation: none;
+    fill: #fff;
+    stroke: none;
+  }
+}
+
