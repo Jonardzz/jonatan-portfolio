@@ -1,10 +1,19 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
+import localFont from "next/font/local";
+
+// Kalam (SIL Open Font License, see app/fonts/Kalam-OFL.txt), bundled with the
+// site so the handwriting is there on first paint with no request to Google.
+const kalam = localFont({
+  src: "../../app/fonts/kalam-latin-400.woff2",
+  weight: "400",
+  display: "block",
+});
 
 /**
- * The hero name, drawn on load: each letter's outline traces itself in
- * (stroke-dashoffset), then the fill fades up. Plays once; reduced motion
+ * The hero name in Kalam handwriting, drawn on load: each letter's outline
+ * traces itself in (stroke-dashoffset), then the fill fades up. Plays once; reduced motion
  * shows the finished name immediately (see .drawn-name in globals.css).
  *
  * The SVG viewBox is fitted to the real text box after the font loads, so the
@@ -32,11 +41,11 @@ export function DrawnName() {
         className="drawn-name block h-auto w-full overflow-visible lg:h-[clamp(5.8rem,27vw,22.5rem)] lg:w-auto lg:max-w-full"
         style={{ visibility: viewBox ? "visible" : "hidden" }}
       >
-        <g ref={groupRef} fontSize="160" fontWeight="600" letterSpacing="-8.8">
+        <g ref={groupRef} fontSize="160" fontWeight="400" style={{ fontFamily: kalam.style.fontFamily }}>
           <text x="0" y="128">
             Jonatan
           </text>
-          <text x="0" y="266">
+          <text x="0" y="280">
             Rodriguez
           </text>
         </g>
